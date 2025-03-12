@@ -15,9 +15,9 @@ public class TestingMain {
             System.out.println("Error");
         }
 
-        Calculator calculator = new Calculator(4, 3);
-        int addResult = calculator.add();
-        int subtractResult = calculator.subtract();
+        Calculator calculator = new Calculator();
+        int addResult = calculator.add(4, 3);
+        int subtractResult = calculator.subtract(4, 3);
 
         if (addResult == 7) {
             System.out.println("Adding test ok");
