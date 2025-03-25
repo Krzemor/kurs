@@ -63,7 +63,7 @@ public class Game {
             switch (choice) {
                 case "1": case "2": case "3":
                     Move playerMove = Move.fromInt(Integer.parseInt(choice));
-                    Move enemyMove = enemy.getMove();
+                    Move enemyMove = enemy.getMove(playerMove);
 
                     System.out.println("Your move: " + playerMove);
                     System.out.println("Enemy move: " + enemyMove);
