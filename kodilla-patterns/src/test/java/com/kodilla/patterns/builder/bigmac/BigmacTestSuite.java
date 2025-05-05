@@ -38,7 +38,5 @@ public class BigmacTestSuite {
         assertTrue(ingredients.contains("cheese"));
         assertEquals(4, ingredients.size());
 
-        // Optional
-        System.out.println(bigmac);
     }
 }
