@@ -7,18 +7,26 @@ import java.util.Stack;
 public class SudokuSolver {
 
     private Stack<BacktrackState> backtrackStates = new Stack<>();
+    private int ctr = 0;
+    private int guessCtr = 0;
 
     public boolean solveSudoku(SudokuBoard board) {
+        ctr = 0;
+        guessCtr = 0;
+
         while (true) {
+            ctr++;
             boolean progress = eliminate(board);
 
             if (board.isFilled()) {
+                difficultyMetrics();
                 return true;
             }
 
             if (!progress) {
                 boolean guessed = guess(board);
                 if (!guessed) {
+                    difficultyMetrics();
                     return false;
                 }
             }
@@ -68,6 +76,7 @@ public class SudokuSolver {
     }
 
     private boolean guess(SudokuBoard board) {
+        guessCtr++;
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 SudokuElement element = board.get(row, col);
@@ -117,5 +126,21 @@ public class SudokuSolver {
                 dest.getPossibleValues().addAll(src.getPossibleValues());
             }
         }
+    }
+
+    private void difficultyMetrics() {
+        String difficulty;
+
+        if (guessCtr == 0) {
+            difficulty = "Easy";
+        } else if (guessCtr <= 5) {
+            difficulty = "Medium";
+        } else {
+            difficulty = "Hard";
+        }
+
+        System.out.println("Sudoku solved in " + ctr + " iterations");
+        System.out.println("Backtrack steps: " + guessCtr);
+        System.out.println("Estimated difficulty: " + difficulty);
     }
 }
