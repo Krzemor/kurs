@@ -30,7 +30,7 @@ public class SudokuBoard {
     public SudokuBoard copy() {
         SudokuBoard copy = new SudokuBoard();
         for (int i = 0; i < 9; i++) {
-            copy.rows.set(i, rows.get(i).copy());
+            copy.rows.set(i, this.rows.get(i).copy());
         }
         return copy;
     }
@@ -40,7 +40,7 @@ public class SudokuBoard {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < 9; row++) {
             if (row % 3 == 0) {
-                sb.append("+-------+-------+-------+\n");
+                sb.append(" ------- ------- -------\n");
             }
             for (int col = 0; col < 9; col++) {
                 if (col % 3 == 0) {
@@ -50,7 +50,7 @@ public class SudokuBoard {
             }
             sb.append("|\n");
         }
-        sb.append("+-------+-------+-------+");
+        sb.append(" ------- ------- ------- ");
         return sb.toString();
     }
 }

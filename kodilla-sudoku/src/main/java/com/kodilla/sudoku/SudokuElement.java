@@ -10,7 +10,8 @@ public class SudokuElement {
     private Set<Integer> possibleValues = new HashSet<>();
 
     public SudokuElement() {
-        for (int i = 0; i < 9; i++) {
+        this.value = EMPTY;
+        for (int i = 1; i <= 9; i++) {
             possibleValues.add(i);
         }
     }
@@ -32,10 +33,14 @@ public class SudokuElement {
 
     public SudokuElement copy() {
         SudokuElement copy = new SudokuElement();
-        copy.value = this.value;
-        copy.possibleValues = new HashSet<>(this.possibleValues);
+        if (this.value != EMPTY) {
+            copy.setValue(this.value);
+        } else {
+            copy.possibleValues = new HashSet<>(this.possibleValues);
+        }
         return copy;
     }
+
 
     @Override
     public String toString() {

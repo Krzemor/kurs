@@ -8,8 +8,14 @@ public class SudokuRow {
     private List<SudokuElement> elements = new ArrayList<>();
 
     public SudokuRow() {
-        for (int i = 0; i < 9; i++) {
-            elements.add(new SudokuElement());
+        this(true);
+    }
+
+    public SudokuRow(boolean init) {
+        if (init) {
+            for (int i = 0; i < 9; i++) {
+                elements.add(new SudokuElement());
+            }
         }
     }
 
@@ -18,9 +24,9 @@ public class SudokuRow {
     }
 
     public SudokuRow copy() {
-        SudokuRow copy = new SudokuRow();
-        for (int i = 0; i < 9; i++) {
-            copy.elements.set(i, elements.get(i).copy());
+        SudokuRow copy = new SudokuRow(false);
+        for (SudokuElement element : this.getElements()) {
+            copy.getElements().add(element.copy());
         }
         return copy;
     }
