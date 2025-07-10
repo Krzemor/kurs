@@ -11,6 +11,10 @@ import java.util.List;
         name = "Employee.retrieveEmployeeByName",
         query = "FROM Employee WHERE lastname = :LASTNAME"
 )
+@NamedQuery(
+        name = "Employee.retrieveByLastnameFragment",
+        query = "FROM Employee WHERE lastname LIKE :LASTNAME_FRAGMENT"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
